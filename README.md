@@ -1,7 +1,7 @@
 # ManhTran's dotfiles
 Warning: Don’t blindly use my settings unless you know what that entails. Use at your own risk!
 
-[!screenshot](./image/Screenshot%202022-08-02%20143526.png)
+![!screenshot](./image/Screenshot%202022-08-02%20143526.png)
 
 ## Contents
 - [vscode config](#vscode)
