@@ -1,17 +1,19 @@
-#ManhTran's dotfiles
+# ManhTran's dotfiles
 Warning: Don’t blindly use my settings unless you know what that entails. Use at your own risk!
 
-##Contents
+[!screenshot](./image/Screenshot%202022-08-02%20143526.png)
+
+## Contents
 - [vscode config](#vscode)
 - [tmux config](#tmux)
 - [git config](#git)
 - [fish config](#fish)
 
-## Vscode setup
+### Vscode setup
 
 	Require [Vim extension](https://marketplace.visualstudio.com/items?itemName=vscodevim.vim)
 
-## Shell setup (Linux & WSL)
+### Shell setup (Linux & WSL)
 
 - [Fish shell](https://fishshell.com/)
 - [Fisher](https://github.com/jorgebucaran/fisher) - Plugin manager
@@ -23,7 +25,7 @@ Warning: Don’t blindly use my settings unless you know what that entails. Use 
 - [peco](https://github.com/peco/peco) - Interactive filtering
 - [tmux](https://github.com/tmux/tmux) - Terminal multiplexer
 
-## LunarVim
+### LunarVim
 
 	Require Neovim(>=0.5)
 - [Lunar](https://github.com/LunarVim/LunarVim)
