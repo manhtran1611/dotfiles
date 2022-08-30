@@ -253,6 +253,12 @@ lvim.plugins = {
       require("todo-comments").setup()
     end,
   },
+  {
+    "ggandor/leap.nvim",
+    config = function()
+      require('leap').set_default_keymaps()
+    end
+  },
 }
 
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
