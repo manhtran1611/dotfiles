@@ -1,9 +1,9 @@
 local present, null_ls = pcall(require, "null-ls")
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
-if not present then
-  return
-end
+        if not present then
+          return
+        end
 
 local b = null_ls.builtins
 
