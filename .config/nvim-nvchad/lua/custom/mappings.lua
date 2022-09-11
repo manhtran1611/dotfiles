@@ -2,6 +2,8 @@ local function termcodes(str)
 	return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
 
+local opts = { noremap = true, silent = true }
+
 local M = {}
 -- n, v, i, t = mode names
 
@@ -44,8 +46,8 @@ M.general = {
 			"toggle theme",
 		},
 
-		["<A-j>"] = { "<cmd>:MoveLine(1)<CR>", "Move line down 1 line", opts = { silent = true, noremap = true } },
-		["<A-k>"] = { "<cmd>:MoveLine(-1)<CR>", "Move line up 1 line", opts = { silent = true, noremap = true } },
+		["<A-j>"] = { "<cmd>:MoveLine(1)<CR>", "Move line down 1 line", opts },
+		["<A-k>"] = { "<cmd>:MoveLine(-1)<CR>", "Move line up 1 line", opts },
 
 		-- Allow moving the cursor through wrapped lines with j, k, <Up> and <Down>
 		-- http://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
@@ -83,8 +85,8 @@ M.general = {
 		["p"] = { 'p:let @+=@0<CR>:let @"=@0<CR>', opts = { silent = true } },
 
 		-- Move block of code down or up
-		["<A-j>"] = { "<cmd>:MoveBlock(1)<CR>", "Move block down 1 line", opts = { silent = true, noremap = true } },
-		["<A-k>"] = { "<cmd>:MoveBlock(-1)<CR>", "Move block up 1 line", opts = { silent = true, noremap = true } },
+		["<A-j>"] = { "<cmd>:MoveBlock(1)<CR>", "Move block down 1 line", opts },
+		["<A-k>"] = { "<cmd>:MoveBlock(-1)<CR>", "Move block up 1 line", opts },
 	},
 }
 
@@ -216,14 +218,14 @@ M.lspconfig = {
 			"floating diagnostic",
 		},
 
-		["[d"] = {
+		["<leader>["] = {
 			function()
 				vim.diagnostic.goto_prev()
 			end,
 			"goto prev",
 		},
 
-		["d]"] = {
+		["<leader>]"] = {
 			function()
 				vim.diagnostic.goto_next()
 			end,

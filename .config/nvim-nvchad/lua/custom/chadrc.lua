@@ -56,6 +56,7 @@ M.plugins = {
 	},
 	remove = {},
 	user = {
+		["sainnhe/sonokai"] = {},
 		["jdhao/better-escape.vim"] = { event = "InsertEnter" },
 		["ggandor/leap.nvim"] = {
 			config = function()
@@ -114,6 +115,39 @@ M.plugins = {
 					ignore_beginning = true, --[[ if the cursor is at the beginning of a filled element it will rather tab out than shift the content ]]
 					exclude = {}, -- tabout will ignore these filetypes
 				})
+			end,
+		},
+		["kylechui/nvim-surround"] = {
+			tag = "*",
+			config = function()
+				require("nvim-surround").setup()
+			end,
+		},
+		["kevinhwang91/nvim-hlslens"] = {
+			config = function()
+				require("hlslens").setup({
+					calm_down = true,
+					nearest_only = true,
+				})
+			end,
+		},
+		["windwp/nvim-ts-autotag"] = {
+			config = function()
+				require("nvim-ts-autotag").setup()
+			end,
+		},
+		["rmagatti/auto-session"] = {
+			config = function()
+				require("auto-session").setup({
+					log_level = "error",
+					auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
+				})
+			end,
+		},
+
+		["lewis6991/spellsitter.nvim"] = {
+			config = function()
+				require("spellsitter").setup()
 			end,
 		},
 	},
