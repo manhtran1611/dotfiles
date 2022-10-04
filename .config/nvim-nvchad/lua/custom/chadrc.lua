@@ -150,6 +150,9 @@ M.plugins = {
 				require("spellsitter").setup()
 			end,
 		},
+		["weilbith/nvim-code-action-menu"] = {
+			cmd = "CodeActionMenu",
+		},
 	},
 }
 

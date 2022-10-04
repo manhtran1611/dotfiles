@@ -197,12 +197,12 @@ M.lspconfig = {
 			"lsp rename",
 		},
 
-		["<leader>ca"] = {
-			function()
-				vim.lsp.buf.code_action()
-			end,
-			"lsp code_action",
-		},
+		-- ["<leader>ca"] = {
+		-- 	function()
+		-- 		vim.lsp.buf.code_action()
+		-- 	end,
+		-- 	"lsp code_action",
+		-- },
 
 		["gr"] = {
 			function()
@@ -297,6 +297,7 @@ M.telescope = {
 		-- git
 		["<leader>cm"] = { "<cmd> Telescope git_commits <CR>", "git commits" },
 		["<leader>gt"] = { "<cmd> Telescope git_status <CR>", "git status" },
+		["<leader>ca"] = { "<cmd> CodeActionMenu <CR>", "Code Action" },
 		-- Git conflict
 		["<leader>gl"] = { "<cmd> Gitsigns blame_line <CR>", "Show blame line" },
 		["<leader>gn"] = { "<cmd> GitConflictNextConflict <CR>", "Show next conflict" },
