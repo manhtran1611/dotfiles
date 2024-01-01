@@ -1,4 +1,4 @@
-# This file is a modified version based on default i3-config-wizard config
+#) This file is a modified version based on default i3-config-wizard config
 # source is available here:
 # https://raw.githubusercontent.com/endeavouros-team/endeavouros-i3wm-setup/master/.config/i3/config
 # Maintainer: joekamprad [joekamprad@endeavouros.com]
@@ -22,7 +22,7 @@
 # is used in the bar {} block below.
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango: Fira Mono Regular Nerd Font 11
+font pango: CaskaydiaCove Nerd Font 11
 
 # set the mod key to the winkey:
 set $mod Mod4
@@ -58,10 +58,10 @@ gaps inner 6
 gaps outer 3
 
 # show window title bars (not officially supported with i3gaps)
-#default_border normal
+default_border normal
 
 # window title alignment
-#title_align center
+title_align center
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -157,9 +157,9 @@ mode "resize" {
 # Pressing right will grow the window's width.
 # Pressing up will shrink the window's height.
 # Pressing down will grow the window's height.
-  bindsym h resize shrink width 10 px or 10 ppt
-    bindsym j resize grow height 10 px or 10 ppt
+    bindsym h resize shrink width 10 px or 10 ppt
     bindsym k resize shrink height 10 px or 10 ppt
+    bindsym j resize grow height 10 px or 10 ppt
     bindsym l resize grow width 10 px or 10 ppt
 
 # same bindings, but for the arrow keys
@@ -180,8 +180,7 @@ bindsym $mod+r mode "resize"
 ######################################
 
 # start a terminal
-# bindsym $mod+t exec xfce4-terminal
-bindsym $mod+t exec kitty
+bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+q kill
@@ -191,7 +190,7 @@ bindsym $mod+q kill
 #bindsym $mod+Ctrl+Shift+l exec i3lock -i  ~/.config/i3/i3-lock-screen.png -p default|win -t
 # lock by blurring the screen:
 # bindsym $mod+Ctrl+Shift+l exec ~/.config/i3/scripts/blur-lock
-bindsym $mod+Ctrl+Shift+l exec betterlockscreen -l
+bindsym $mod+$alt+Shift+l exec betterlockscreen -l
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -210,45 +209,45 @@ bindsym XF86MonBrightnessUp exec brightnessctl set +20 && notify-send "Brightnes
 bindsym XF86MonBrightnessDown exec brightnessctl set 20- && notify-send "Brightness - $(brightnessctl get)%"
 
 # change focus
-bindsym $mod+$alt+h focus left
-bindsym $mod+$alt+j focus down
-bindsym $mod+$alt+k focus up
-bindsym $mod+$alt+l focus right
+bindsym $mod+Ctrl+h focus left
+bindsym $mod+Ctrl+j focus down
+bindsym $mod+Ctrl+k focus up
+bindsym $mod+Ctrl+l focus right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+$alt+Left focus left
-bindsym $mod+$alt+Down focus down
-bindsym $mod+$alt+Up focus up
-bindsym $mod+$alt+Right focus right
+bindsym $mod+Ctrl+Left focus left
+bindsym $mod+Ctrl+Down focus down
+bindsym $mod+Ctrl+Up focus up
+bindsym $mod+Ctrl+Right focus right
 
 # move focused window
-bindsym $mod+$alt+Shift+h move left
-bindsym $mod+$alt+Shift+j move down
-bindsym $mod+$alt+Shift+k move up
-bindsym $mod+$alt+Shift+l move right
+bindsym $mod+Ctrl+Shift+h move left
+bindsym $mod+Ctrl+Shift+j move down
+bindsym $mod+Ctrl+Shift+k move up
+bindsym $mod+Ctrl+Shift+l move right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym $mod+Ctrl+Shift+Left move left
+bindsym $mod+Ctrl+Shift+Down move down
+bindsym $mod+Ctrl+Shift+Up move up
+bindsym $mod+Ctrl+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+Ctrl+h split h
+bindsym $mod+$alt+h split h
 
 # split in vertical orientation
-bindsym $mod+Ctrl+v split v
+bindsym $mod+$alt+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+g layout tabbed
+# bindsym $mod+s layout stacking
+bindsym $mod+t layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+# bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
 # bindsym $mod+space focus mode_toggle
@@ -257,17 +256,18 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+a focus parent
 
 # open new empty workspace
-bindsym $mod+Shift+n exec ~/.config/i3/scripts/empty_workspace
+# bindsym $mod+Shift+n exec ~/.config/i3/scripts/empty_workspace
 
 # Multimedia Keys
 
 # volume
-bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+ && pkill -RTMIN+1 i3blocks
-bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%- && pkill -RTMIN+1 i3blocks
+set $volume $(amixer -D pulse get Master | grep '%' | head -n 1 | cut -d '[' -f 2 | cut -d '%' -f 1)
+bindsym XF86AudioRaiseVolume exec amixer sset Master 5%+ && notify-send "Volume - $volume%" -h int:value:$volume 
+bindsym XF86AudioLowerVolume exec amixer sset Master 5%- && notify-send "Volume - $volume%" -h int:value:$volume
 
 # gradular volume control
-bindsym $mod+XF86AudioRaiseVolume exec amixer -D pulse sset Master 1%+ && pkill -RTMIN+1 i3blocks
-bindsym $mod+XF86AudioLowerVolume exec amixer -D pulse sset Master 1%- && pkill -RTMIN+1 i3blocks
+bindsym $mod+XF86AudioRaiseVolume exec amixer pulse sset Master 1%+ && pkill -RTMIN+1 i3blocks
+bindsym $mod+XF86AudioLowerVolume exec amixer pulse sset Master 1%- && pkill -RTMIN+1 i3blocks
 
 # mute
 bindsym XF86AudioMute exec amixer sset Master toggle && killall -USR1 i3blocks
@@ -321,7 +321,7 @@ set $ws10 "10"
 assign [class="kitty" instance="kitty"] $ws1
 assign [class="LibreWolf" instance="Navigator"] $ws2
 assign [class="discord" instance="discord"] $ws3
-assign [class="Steam" instance="Steam"] $ws4
+assign [class="steam" instance="steamwebhelper"] $ws4
 assign [class="Lutris" instance="lutris"] $ws5
 assign [class="thunderbird" instance="Mail"] $ws8
 
@@ -380,9 +380,8 @@ exec --no-startup-id dex --autostart --environment i3
 # startup app
 exec --no-startup-id "ibus-daemon -rd"
 exec --no-startup-id /usr/bin/discord 
-exec --no-startup-id /usr/bin/spotify-launcher 
+exec --no-startup-id /usr/bin/spotify
 exec --no-startup-id /usr/bin/redshift
-exec --no-startup-id /usr/lib/kdeconnectd
 exec_always --no-startup-id sleep 3 && bash ~/.config/polybar/launch.sh --forest
 exec_always --no-startup-id "spotify-listener & disown"
 
@@ -391,6 +390,8 @@ exec --no-startup-id numlockx on
 
 # configure multiple keyboard layouts and hotkey to switch (Alt+CAPSLOCK in this example)
 #exec --no-startup-id setxkbmap -layout 'us,sk' -variant altgr-intl,qwerty -option 'grp:alt_caps_toggle'
+exec_always --no-startup-id setxkbmap -layout us -variant dvp -option 'ctrl:nocaps'
+exec_always --no-startup-id xcape -e "Control_L=Escape"
 
 # start conky:
 #exec_always --no-startup-id conky
@@ -400,10 +401,10 @@ exec --no-startup-id numlockx on
 exec --no-startup-id ~/.screenlayout/monitor.sh
 
 # set wallpaper
-exec --no-startup-id sleep 2 && nitrogen --set-scaled ~/Pictures/1.png
+exec_always --no-startup-id feh --bg-fill ~/Pictures/15.png
 
 # set powersavings for display:
-exec --no-startup-id xset s 480 dpms 600 600 600
+# exec --no-startup-id xset s 480 dpms 600 600 600
 
 # disable power saving (for example if using xscreensaver)
 #exec --no-startup-id xset -dpms
@@ -482,24 +483,41 @@ for_window [class="^.*"] border pixel 1
 ######################################
 
 # Define colors variables:
-set $darkbluetrans	#08052be6
-set $darkblue		#08052b
-set $lightblue		#5294e2
-set $urgentred		#e53935
-set $white		#ffffff
-set $black		#000000
-set $purple		#e345ff
-set $darkgrey		#383c4a
-set $grey		#b0b5bd
-set $mediumgrey		#8b8b8b
-set $yellowbrown	#e1b700
+set $rosewater #f4dbd6
+set $flamingo  #f0c6c6
+set $pink      #f5bde6
+set $mauve     #c6a0f6
+set $red       #ed8796
+set $maroon    #ee99a0
+set $peach     #f5a97f
+set $green     #a6da95
+set $teal      #8bd5ca
+set $sky       #91d7e3
+set $sapphire  #7dc4e4
+set $blue      #8aadf4
+set $lavender  #b7bdf8
+set $text      #cad3f5
+set $subtext1  #b8c0e0
+set $subtext0  #a5adcb
+set $overlay2  #939ab7
+set $overlay1  #8087a2
+set $overlay0  #6e738d
+set $surface2  #5b6078
+set $surface1  #494d64
+set $surface0  #363a4f
+set $base      #24273a
+set $mantle    #1e2030
+set $crust     #181926
 
 # define colors for windows:
-#class		        	border		bground		text		indicator	child_border
-client.focused		    	$lightblue	$darkblue	$white		$mediumgrey	$mediumgrey
-client.unfocused	    	$darkblue	$darkblue	$grey		$darkgrey	$darkgrey
-client.focused_inactive		$darkblue	$darkblue	$grey		$black		$black
-client.urgent		    	$urgentred	$urgentred	$white		$yellowbrown	$yellowbrown
+# target                 title     bg    text   indicator  border
+client.focused           $base $surface1 $red  $rosewater $maroon
+client.focused_inactive  $overlay0 $base $text  $rosewater $overlay0
+client.unfocused         $overlay0 $base $text  $rosewater $overlay0
+client.urgent            $peach    $base $peach $overlay0  $peach
+client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
+client.background        $base
+
 
 ############################################
 # bar settings (input comes from i3blocks) #
@@ -573,9 +591,9 @@ client.urgent		    	$urgentred	$urgentred	$white		$yellowbrown	$yellowbrown
 ## rofi bindings fancy application menu ($mod+d /F9 optional disabled)
 
 # Dmenu
-bindsym $alt+space exec --no-startup-id ~/.config/polybar/forest/scripts/launcher.sh
+bindsym $mod+space exec --no-startup-id ~/.config/rofi/bin/launcher
 # Powermenu
-bindsym $mod+Escape exec --no-startup-id ~/.config/polybar/forest/scripts/powermenu.sh
+bindsym $mod+Escape exec --no-startup-id ~/.config/rofi/bin/powermenu
 
 # bindsym $alt+space exec rofi -modi drun -show drun \
 # 		-config ~/.config/rofi/rofidmenu.rasi
