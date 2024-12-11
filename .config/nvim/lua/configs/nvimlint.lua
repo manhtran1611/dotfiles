@@ -10,6 +10,9 @@ return function()
     -- yaml = { "yamllint" },
     css = { "stylelint" },
     scss = { "stylelint" },
+    sql = { "sqlfluff" },
+    terraform = { "tflint" },
+    markdown = { "markdownlint", "vale" },
   }
   local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
 

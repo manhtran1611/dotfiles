@@ -1,20 +1,18 @@
-local on_attach = require("plugins.configs.lspconfig").on_attach
-local capabilities = require("plugins.configs.lspconfig").capabilities
+-- load defaults i.e lua_lsp
+require("nvchad.configs.lspconfig").defaults()
 
 local lspconfig = require "lspconfig"
 
--- if you just want default config for the servers then put them in a table
+-- EXAMPLE
 local servers = {
   "html",
   "css_variables",
   "cssls",
-  "cssmodules_ls",
   "eslint",
-  "tsserver",
+  "ts_ls",
   "dockerls",
   "dotls",
   "graphql",
-  "grammarly",
   "jsonls",
   "vimls",
   "yamlls",
@@ -23,27 +21,37 @@ local servers = {
   "stylelint_lsp",
   "docker_compose_language_service",
   "sqlls",
-  "terraform_lsp",
   "terraformls",
   "tailwindcss",
   "gitlab_ci_ls",
+  -- markdown
+  "vale_ls",
 }
+local nvlsp = require "nvchad.configs.lspconfig"
 
+-- lsps with default config
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
+    on_attach = nvlsp.on_attach,
+    on_init = nvlsp.on_init,
+    capabilities = nvlsp.capabilities,
   }
 end
 
 lspconfig.yamlls.setup = {
-  schemas = {
-    ["https://raw.githubusercontent.com/instrumenta/kubernetes-json-schema/master/v1.18.0-standalone-strict/all.json"] = "/*.k8s.yaml",
+  settings = {
+    yaml = {
+      keyOrdering = false,
+      schemas = {
+        kubernetes = "k8s-*.yaml",
+        ["https://raw.githubusercontent.com/instrumenta/kubernetes-json-schema/master/v1.18.0-standalone-strict/all.json"] = "/manifest/**/*.yaml",
+      },
+    },
   },
 }
 
 lspconfig.eslint.setup {
-  on_attach = function(client, bufnr)
+  on_attach = function(_, bufnr)
     vim.api.nvim_create_autocmd("BufWritePre", {
       buffer = bufnr,
       command = "EslintFixAll",
@@ -62,7 +70,7 @@ lspconfig.stylelint_lsp.setup {
 
 lspconfig.cssls.setup {
   filetypes = { "css", "scss", "less" },
-  capabilities = capabilities,
+  capabilities = nvlsp.capabilities,
   settings = {
     css = {
       validate = true,
@@ -79,13 +87,4 @@ lspconfig.cssls.setup {
   },
 }
 
-lspconfig.cssmodules_ls.setup {
-  filetypes = { "css", "scss", "less" },
-  settings = {
-    css = {
-      lint = {
-        unknownAtRules = "ignore",
-      },
-    },
-  },
-}
+vim.diagnostic.config { virtual_text = false }
