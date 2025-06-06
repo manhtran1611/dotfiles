@@ -1,0 +1,78 @@
+[colors]
+draw_bold_text_with_bright_colors = true
+
+[cursor]
+style.blinking = "Never"
+
+[[keyboard.bindings]]
+action = "Paste"
+key = "V"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "Copy"
+key = "C"
+mods = "Control|Shift"
+
+# disable ctrl shift f
+[[keyboard.bindings]]
+action = "ReceiveChar"
+key = "f"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "ClearLogNotice"
+key = "L"
+mods = "Control"
+
+[[keyboard.bindings]]
+chars = "\f"
+key = "L"
+mods = "Control"
+
+[[keyboard.bindings]]
+action = "ToggleViMode"
+key = "h"
+mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "SpawnNewInstance"
+key = "Return"
+mods = "Control|Shift"
+
+[general]
+live_config_reload = true
+import = ["~/.config/alacritty/themes/one_dark.toml"]
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 18.0
+
+[font.normal]
+family = "0xProto Nerd Font"
+style = "Regular"
+
+[font.offset]
+x = 0
+y = 1
+
+[scrolling]
+history = 50000
+
+[window]
+dynamic_padding = false
+opacity = 0.9
+title = "Alacritty"
+
+[window.class]
+general = "Alacritty"
+instance = "Alacritty"
+
+[window.padding]
+x = 15
+y = 10
+
+[mouse]
+hide_when_typing = true

@@ -3,12 +3,14 @@
 This is my opinionated linux dotfiles. Feel free to use, this is how it looks
 like
 
+It has been a long time since I update my config. I has moved to hyprland instead of i3. I also use chezmoi to manage my dotfiles now. So please ignore everything I wrote below, I'll update the README sometime later.
+
 ![!screenshot](./image/2023-06-18_22-51.png)
 ![!screenshot](./image/2023-06-18_23-42.png)
 
 ## Contents
 
-- [i3 config](#i3-config)
+- [Hyprland config](#hypr-config)
 - [Fish config](#fish-config)
 - [Neovim config](#neovim-config)
 
@@ -17,16 +19,14 @@ like
 I use Arch btw, and I like yay
 
 ```
-yay -S \ 
-        fish htop-vim neovim kitty \
-        polybar rofi picom-jonaburg-git \
-        flameshot kdeconnect peco exa \
-        betterlockscreen xscreensaver \
+yay -S \
+        fish htop-vim neovim kitty alacritty \
+        flameshot fzf exa \
         firefox-developer-edition thunderbird \
         spotify discord lutris steam
 ```
 
-### i3 config
+### hypr config
 
 - [dunst](https://wiki.archlinux.org/title/Dunst) - Notifications
 - [flameshot](https://flameshot.org) - Screen capture

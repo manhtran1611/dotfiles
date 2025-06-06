@@ -1,0 +1,58 @@
+device_name = "Gaming Keyboard"
+
+[[dual_role]]
+input = "KEY_CAPSLOCK"
+hold = ["KEY_LEFTCTRL"]
+tap = ["KEY_ESC"]
+
+[[remap]]
+input = ["KEY_ESC"]
+output = ["KEY_GRAVE"]
+
+# Home row mod
+# [[dual_role]]
+# input = "KEY_A"
+# hold = ["KEY_LEFTMETA"]
+# tap = ["KEY_A"]
+#
+# [[dual_role]]
+# input = "KEY_SEMICOLON"
+# hold = ["KEY_RIGHTMETA"]
+# tap = ["KEY_SEMICOLON"]
+#
+# [[dual_role]]
+# input = "KEY_F"
+# hold = ["KEY_LEFTCTRL"]
+# tap = ["KEY_F"]
+#
+# [[dual_role]]
+# input = "KEY_J"
+# hold = ["KEY_RIGHTCTRL"]
+# tap = ["KEY_J"]
+#
+# [[dual_role]]
+# input = "KEY_D"
+# hold = ["KEY_LEFTSHIFT"]
+# tap = ["KEY_D"]
+#
+# [[dual_role]]
+# input = "KEY_K"
+# hold = ["KEY_RIGHTSHIFT"]
+# tap = ["KEY_K"]
+#
+# [[dual_role]]
+# input = "KEY_S"
+# hold = ["KEY_LEFTALT"]
+# tap = ["KEY_S"]
+#
+# [[dual_role]]
+# input = "KEY_S"
+# hold = ["KEY_RIGHTALT"]
+# tap = ["KEY_S"]
+
+# device_name = "PFU Limited HHKB-Classic"
+#
+# [[dual_role]]
+# input = "KEY_LEFTCTRL"
+# hold = ["KEY_LEFTCTRL"]
+# tap = ["KEY_ESC"]
