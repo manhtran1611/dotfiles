@@ -11,7 +11,7 @@ alias gg "ghq get"
 alias g git
 alias v nvim
 alias k kubectl
-alias ssh "kitten ssh"
+command -qv kitten && alias ssh "kitten ssh"
 command -qv diff-so-fancy && alias diff diff-so-fancy
 command -qv nvim && alias vim nvim
 command -qv ddgr && alias d ddgr
@@ -33,8 +33,6 @@ set -gx PATH $GOPATH/bin $PATH
 # bun
 set --export BUN_INSTALL "$HOME/.bun"
 set --export PATH $BUN_INSTALL/bin $PATH
-
-# set --export KUBECONFIG "$HOME/.kube/configs/config.common-web:$HOME/.kube/configs/config.gsd-dev:$HOME/.kube/configs/config.gsd-qa:$HOME/.kube/configs/config.gsd-live:$HOME/.kube/configs/config.bws-qa:$HOME/.kube/configs/config.bws-live"
 
 set kube_configs_path "$HOME/.kube/configs"
 set kube_configs ""
