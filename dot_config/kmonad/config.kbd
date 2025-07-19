@@ -1,0 +1,52 @@
+(defcfg
+  input (device-file "/dev/input/by-id/usb-PFU_Limited_HHKB-Classic-event-kbd")
+  output (uinput-sink "custom kmonad")
+  fallthrough true
+)
+
+(defsrc
+  esc
+  caps
+  lctrl a s d f g h j k l ;
+  spc
+)
+
+(defalias
+    esc_grv grv
+    lctl_esc (tap-hold-next-release 200 esc lctl)
+    caps_game (layer-switch game)
+    caps_custom (layer-switch custom)
+    spc (tap-hold 200 spc (layer-toggle space))
+    met_a (tap-hold-next-release 200 a lmet)
+    alt_s (tap-hold-next-release 200 s lalt)
+    sft_d (tap-hold-next-release 200 d lsft)
+    ctl_f (tap-hold-next-release 200 f lctl)
+
+    ctl_j (tap-hold-next-release 200 j rctl)
+    sft_k (tap-hold-next-release 200 k rsft)
+    alt_l (tap-hold-next-release 200 l lalt)
+    met_; (tap-hold-next-release 200 ; rmet)
+)
+
+(deflayer custom
+    @esc_grv
+    @caps_game
+    @lctl_esc
+    @met_a   @alt_s   @sft_d   @ctl_f   g   h   @ctl_j   @sft_k   @alt_l   @met_;
+    @spc
+)
+
+
+(deflayer space
+  @esc_grv
+  @caps_custom
+  @lctl_esc a s d f g left down up rght ;
+  space
+)
+
+(deflayer game
+  @esc_grv
+  @caps_custom
+  @lctl_esc a s d f g h j k l ;
+  space
+)
